@@ -21,38 +21,50 @@
 
 	<title>Demo</title>
 </head>
-<body>
+<body background="image.jpg">
+<div class="container">
+	<div class="row">
+		<div class="col-lg-2">
+			
+		</div>
+		<div class="col-lg-8"><br><br><br><br>
+			<div class="jumbotron">
+				<div id ="initial">
+				<h1>Please Enter Details</h1>
 
-	<form id="idform" >
-		Email <br><br>
-		<input type="email" name="email" required="">
-		<input type="submit" value="submit" >
-	</form>
-	<br><br><br><br>
+				<form id="idform" action="fetchdata.php" method="post">
+					<div class="form-row">
+						<div class="form-group col-md-6">
+					    	<label for="regno">Register Number</label>
+					    	<input type="text" class="form-control" id="regno" name="regno" placeholder="Email">
+					    </div>
+					    <div class="form-group col-md-6">
+					      <label for="dob">Date of Birth</label>
+					      <input type="date" class="form-control" id="dob" placeholder="Password" name="dob">
+					    </div>
+					  </div>
 
-	<div id="dis"></div>
+					  <button type="submit" class="btn btn-primary">Proceed</button>
+					</form>
 
-	<script type="text/javascript">
+
+</div>
+
+
+
+
+
+			</div>
+			
+		</div>
+		<div class="col-lg-2">
+			
+		</div>
+	</div>
+</div>
+
+
 	
-
-
-
-
-
-
-
-
-				
-
-				}
-			}
-		})
-		
-
-	});
-
-
-
 </script>
 
 
