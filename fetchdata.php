@@ -8,13 +8,13 @@
 	if(mysqli_num_rows($res)>=1)
 	{  
 
-		echo json_encode(array('status'=>'success','name'=>$row["Name"] ));
  
 	}
 	else
 	{
-		echo json_encode(array('status'=>'error'));
+		
 	}
+
 
 
  ?>
