@@ -1,14 +1,15 @@
 <?php 
 
 	require("connect.php");
-	$email=$_POST["email"];
-	$sql="SELECT Name FROM user WHERE Email='$email'" ;
-	$res=mysqli_query($db,$sql);
+	$regno=$_POST["regno"];
+	$dob=$_POST["dob"];
+	$sql1="SELECT * FROM student WHERE reg='$regno' AND dob='$dob'" ;
+	$res=mysqli_query($db,$sql1);
 	$row=mysqli_fetch_assoc($res);
-	if(mysqli_num_rows($res)>=1)
+	if(mysqli_num_rows($res)==1)
 	{  
-
-		echo json_encode(array('status'=>'success','name'=>$row["Name"] ));
+		//$sql2="SELECT Name FROM student WHERE regno='$regno'";
+		echo json_encode(array('status'=>'success','name'=>$row["name"] ));
  
 	}
 	else
