@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 01, 2018 at 03:43 PM
+-- Generation Time: Mar 16, 2018 at 06:32 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -30,15 +30,20 @@ CREATE TABLE `admin` (
   `admname` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `role` varchar(20) NOT NULL
+  `role` varchar(20) NOT NULL,
+  `dept` varchar(10) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`admname`, `email`, `password`, `role`) VALUES
-('tutorname', 'demo@gmail.com', 'asdf', 'tutor');
+INSERT INTO `admin` (`admname`, `email`, `password`, `role`, `dept`) VALUES
+('tutorname', 'demo@gmail.com', 'asdf', 'tutor', NULL),
+('Admin', 'admin1@gmail.com', 'asdf', 'admin', NULL),
+('tutor1', 'tutor1@gmail.com', 'asdf', 'tutor', NULL),
+('HOD1', 'hod1@gmail.com', 'asdf', 'hod', 'CSE'),
+('HOD2', 'hod2@gmail.com', 'asdf', 'hod', 'EEE');
 
 -- --------------------------------------------------------
 
