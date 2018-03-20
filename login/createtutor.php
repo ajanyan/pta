@@ -21,6 +21,19 @@
 	<title>Create</title>
 </head>
 <body background="image.jpg">
+  <?php 
+  session_start();
+  if(!isset($_SESSION["user"] ) && !isset($_SESSION["email"]))
+  {
+    header("location:index.php");
+  }
+  elseif ($_SESSION["role"]!="hod")
+  {
+    header("location:logout.php");
+  }
+
+
+?>
 
 	<div class="container">
 		<div class="row">
@@ -29,9 +42,9 @@
 			</div>
 			<div class="col-lg-8"><br><br><br>
 				<div class="jumbotron">
-				<h1 align="center">Please Enter HOD Details</h1><br>
+				<h1 align="center">Please Enter Tutor Details</h1><br>
 				<br>
-					<form action="createhod.php" method="post">
+					<form action="createtutor.php" method="post">
 						<div class="form-group">
 					    	<label for="name">Name</label>
 					    	<input type="text" class="form-control" name="name" id="name" placeholder="Name" required="">
@@ -45,18 +58,7 @@
 					      <label for="password">Password</label>
 					      <input type="password" class="form-control" name="password" id="password" placeholder="Password" required="">
 					    </div>
-					     <div class="form-group">
-                  <label for="dept">Department</label>
-                  <select id="dept" class="form-control" name="dept">
-                    <option selected>CSE</option>
-                    <option>EEE</option>
-                    <option>ME</option>
-                    <option>EC</option>
-                    <option>CE</option>
-                    <option>IC</option>
-                  </select>
-
-              </div>
+					 
       
 						
 	
@@ -80,15 +82,22 @@
 
     if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])) 
     {
+
         $name=$_POST["name"];
 
         $password=$_POST["password"];
     
         $email=$_POST["email"];
 
-        $dept=$_POST["dept"];
+        $sql1="SELECT dept FROM admin WHERE email = '$_SESSION[user]'";
 
-        $sql="INSERT INTO admin (admname,email,password,role,dept) VALUES ('$name','$email','$password','hod','$dept')";
+        $res1=mysqli_query($db,$sql1);
+
+        $row1=mysqli_fetch_assoc($res1);
+
+        $dept=$row1["dept"];
+
+        $sql="INSERT INTO admin (admname,email,password,role,dept) VALUES ('$name','$email','$password','tutor','$dept')";
         if (mysqli_query($db,$sql)) 
         {
 ?>
@@ -98,7 +107,7 @@
                 'Reviewer created',
                 'success'
                 ).then(function() {
-                window.location.href ='adminprofile.php'; 
+                window.location.href ='hodprofile.php'; 
               });
         </script>
 <?php
@@ -110,13 +119,13 @@
 
             ?>
 
-            <script>
+           <script>
                  swal(
                         'Oops...',
                         'User already exists!',
                         'error'
                      )
-            </script>
+            </script> 
             <?php
             
         }

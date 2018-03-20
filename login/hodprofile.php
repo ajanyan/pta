@@ -4,7 +4,7 @@
   <style type="text/css">
     #myiframe {width:700px; height:350%;} 
   </style>
-  <title>Manage HOD</title>
+  <title>Manage Tutor</title>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.3/sweetalert2.all.min.js"></script>
@@ -18,14 +18,36 @@
   {
     header("location:index.php");
   }
-  elseif ($_SESSION["role"]!="admin")
+  elseif ($_SESSION["role"]!="hod")
   {
     header("location:logout.php");
   }
 require("connect.php");
-$sql="SELECT * FROM admin WHERE role ='hod' ";
+
+/////////////////////////////////////////////////////////////
+
+
+
+
+        $sql2="SELECT dept FROM admin WHERE email = '$_SESSION[user]'";
+
+        $res2=mysqli_query($db,$sql2);
+
+        $row2=mysqli_fetch_assoc($res2);
+
+        $dept=$row2["dept"];
+
+
+
+
+////////////////////////////////////////////////////////////
+
+
+
+
+
+$sql="SELECT * FROM admin WHERE role ='tutor'  ";
 $res=mysqli_query($db,$sql);
-//$row=mysqli_fetch_assoc($res);
 
 ?>
   <nav class="navbar navbar-expand-md navbar-dark bg-primary">
@@ -36,7 +58,7 @@ $res=mysqli_query($db,$sql);
     <ul class="navbar-nav mr-auto">
     
       <li class="nav-item active">
-        <a class="nav-link" href="adminprofile.php">Manage HOD</a>
+        <a class="nav-link" href="hodprofile.php">Manage Tutor</a>
       </li>
 
     
@@ -66,7 +88,7 @@ $res=mysqli_query($db,$sql);
   <tbody>
     <?php
       if( mysqli_num_rows( $res )==0 ){
-        echo '<tr><td colspan="4">No Sub Admins Found</td></tr>';
+        echo '<tr><td colspan="4">No Tutors Found</td></tr>';
           echo "<tr>
        <td><a href='createhod.php'><button class='btn btn-primary'>Create Reviewer</button></a></td>
        <td><a href='../php/changeadminmail.php'><button class='btn btn-primary'>Change Admin Mail</button></a></td>
@@ -81,14 +103,14 @@ $res=mysqli_query($db,$sql);
        <td>{$row['admname']}</td>
        <td>{$row['email']}</td>
        <td>{$row['dept']}</td>
-       <td><form action=adminprofile.php method='post'>
+       <td><form action=hodprofile.php method='post'>
           <input type='hidden' name ='subid' value='$id'>
           <input type='submit' class='btn btn-default' value ='Delete' ></form></td>
        </tr>";
         }
        echo "<tr>
-       <td><a href='createhod.php'><button class='btn btn-primary'>Create HOD</button></a></td>
-       <td><a href='changeadminmail.php'><button class='btn btn-primary'>Change Admin Mail</button></a></td>
+       <td><a href='createtutor.php'><button class='btn btn-primary'>Create Tutor</button></a></td>
+       <td></td>
        <td></td>
        <td></td>
        </tr>";
@@ -111,13 +133,12 @@ $res=mysqli_query($db,$sql);
                   'Reviewer Deleted',
                   'warning'
                     ).then(function() {
-                window.location.href ='adminprofile.php'; 
+                window.location.href ='hodprofile.php'; 
               });
                 </script>";
           }
 
      
-      
     
     }
 
