@@ -104,7 +104,7 @@
         <script>
                swal(
                 'Success',
-                'Reviewer created',
+                'Tutor created',
                 'success'
                 ).then(function() {
                 window.location.href ='hodprofile.php'; 

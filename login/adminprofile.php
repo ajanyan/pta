@@ -108,7 +108,7 @@ $res=mysqli_query($db,$sql);
             echo "<script>
                   swal(
                   'Deleted',
-                  'Reviewer Deleted',
+                  'HOD Deleted',
                   'warning'
                     ).then(function() {
                 window.location.href ='adminprofile.php'; 
