@@ -23,9 +23,9 @@
     header("location:logout.php");
   }
 require("connect.php");
-$sql="SELECT * FROM admin WHERE role ='hod' ";
+$tutorname=$_SESSION['name'];
+$sql="SELECT * FROM student WHERE tutor ='$tutorname' ";
 $res=mysqli_query($db,$sql);
-//$row=mysqli_fetch_assoc($res);
 
 ?>
   <nav class="navbar navbar-expand-md navbar-dark bg-primary">
@@ -36,12 +36,15 @@ $res=mysqli_query($db,$sql);
     <ul class="navbar-nav mr-auto">
     
       <li class="nav-item active">
-        <a class="nav-link" href="adminprofile.php">Manage HOD</a>
+        <a class="nav-link" href="tutorprofile.php">Manage Students</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="uploaddetails.php">Upload</a>
       </li>
 
     
       <li class="nav-item">
-        <a class="nav-link" href="changepassword.php">Change Password</a>
+        <a class="nav-link" href="changetutorpassword.php">Change Password</a>
       </li>
 
     </ul>
@@ -58,15 +61,16 @@ $res=mysqli_query($db,$sql);
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Reviewer Name</th>
-      <th>Email</th>
-      <th>Department</th>     
+      <th>Register Number</th>
+      <th>Name</th>
+      <th></th>
+         
     </tr>
   </thead>
   <tbody>
     <?php
       if( mysqli_num_rows( $res )==0 ){
-        echo '<tr><td colspan="4">No Sub Admins Found</td></tr>';
+        echo '<tr><td colspan="4">No Students Found</td></tr>';
           echo "<tr>
        <td><a href='createhod.php'><button class='btn btn-primary'>Create Reviewer</button></a></td>
        <td><a href='../php/changeadminmail.php'><button class='btn btn-primary'>Change Admin Mail</button></a></td>
@@ -76,11 +80,10 @@ $res=mysqli_query($db,$sql);
 
       }else{
         while($row=mysqli_fetch_assoc($res)){
-        $id=$row["admname"];
+        $id=$row["name"];
        echo "<tr>
-       <td>{$row['admname']}</td>
-       <td>{$row['email']}</td>
-       <td>{$row['dept']}</td>
+       <td>{$row['reg']}</td>
+       <td>{$row['name']}</td>
        <td><form action=adminprofile.php method='post'>
           <input type='hidden' name ='subid' value='$id'>
           <input type='submit' class='btn btn-default' value ='Delete' ></form></td>
@@ -89,7 +92,6 @@ $res=mysqli_query($db,$sql);
        echo "<tr>
        <td><a href='createhod.php'><button class='btn btn-primary'>Create Reviewer</button></a></td>
        <td><a href='changeadminmail.php'><button class='btn btn-primary'>Change Admin Mail</button></a></td>
-       <td></td>
        <td></td>
        </tr>";
 
@@ -101,14 +103,14 @@ $res=mysqli_query($db,$sql);
     {
   
       
-      $sql3="DELETE FROM admin WHERE admname='$_POST[subid]'";
+      $sql3="DELETE FROM student WHERE admname='$_POST[subid]'";
 
           if (mysqli_query($db,$sql3))
           {
             echo "<script>
                   swal(
                   'Deleted',
-                  'Reviewer Deleted',
+                  'Data Deleted',
                   'warning'
                     ).then(function() {
                 window.location.href ='adminprofile.php'; 

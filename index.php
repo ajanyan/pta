@@ -19,9 +19,9 @@
 
 
 
-	<title>Demo</title>
+	<title>PTA</title>
 </head>
-<body background="image.jpg">
+<body background="static/image.jpg">
 <div class="container">
 	<div class="row">
 		<div class="col-lg-2">
@@ -36,7 +36,7 @@
 					<div class="form-row">
 						<div class="form-group col-md-6">
 					    	<label for="regno">Register Number</label>
-					    	<input type="text" class="form-control" id="regno" name="regno" placeholder="Email">
+					    	<input type="text" class="form-control" id="regno" name="regno" placeholder="Register Number">
 					    </div>
 					    <div class="form-group col-md-6">
 					      <label for="dob">Date of Birth</label>

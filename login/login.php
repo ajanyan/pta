@@ -29,7 +29,7 @@
 		$row = mysqli_fetch_assoc( $res );
 		session_start();
 		$_SESSION['user']=$user;
-		$_SESSION['name']=$row['name'];
+		$_SESSION['name']=$row['admname'];
 		$_SESSION['role']=$row['role'];
 
 		

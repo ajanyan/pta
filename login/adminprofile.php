@@ -66,7 +66,7 @@ $res=mysqli_query($db,$sql);
   <tbody>
     <?php
       if( mysqli_num_rows( $res )==0 ){
-        echo '<tr><td colspan="4">No Sub Admins Found</td></tr>';
+        echo '<tr><td colspan="4">No HOD Found</td></tr>';
           echo "<tr>
        <td><a href='createhod.php'><button class='btn btn-primary'>Create Reviewer</button></a></td>
        <td><a href='../php/changeadminmail.php'><button class='btn btn-primary'>Change Admin Mail</button></a></td>

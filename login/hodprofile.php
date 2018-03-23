@@ -46,7 +46,7 @@ require("connect.php");
 
 
 
-$sql="SELECT * FROM admin WHERE role ='tutor'  ";
+$sql="SELECT * FROM admin WHERE role ='tutor' AND dept = '$dept'  ";
 $res=mysqli_query($db,$sql);
 
 ?>
@@ -63,7 +63,7 @@ $res=mysqli_query($db,$sql);
 
     
       <li class="nav-item">
-        <a class="nav-link" href="changepassword.php">Change Password</a>
+        <a class="nav-link" href="changehodpassword.php">Change Password</a>
       </li>
 
     </ul>
