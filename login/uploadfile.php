@@ -1,4 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload</title>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.3/sweetalert2.all.min.js"></script>
+</head>
+<body>
 <?php
+
 
 
   session_start();
@@ -11,7 +20,11 @@
     header("location:logout.php");
   }
 
-
+if(!isset($_POST['key']))
+{
+    
+    header("location:index.php");
+}
 
 
  define ("filesplace","./studentdata");
@@ -19,13 +32,21 @@
  {
     if ($_FILES['data']['type'] != "application/vnd.ms-excel")
     {
-        echo "<p>Data must be uploaded in CSV format</p>";
+
+        echo "<script>
+                  swal(
+                  'Error',
+                  'Data must be in CSV Format',
+                  'error'
+                    ).then(function() {
+                window.location.href ='uploaddetails.php'; 
+              });
+                </script>";
     } 
     else
     {
          $name = substr(md5(mt_rand()), 0, 7);
 
-print_r($_SESSION);
 
         $result = move_uploaded_file($_FILES['data']['tmp_name'], filesplace."/$name.csv");
         $file = fopen("studentdata/$name.csv","r");
@@ -40,19 +61,43 @@ print_r($_SESSION);
                 $date = new DateTime($file["2"]);
                 $timestamp = $date->getTimestamp(); 
                 $dob = $date->format('Y-m-d');
-                
+
                 require("connect.php");
                 $tutor=$_SESSION['name'];
                 $sql="INSERT INTO student VALUES('$regno' ,'$studname','$dob','$tutor')";
                 mysqli_query($db,$sql);
-                echo "Success<br>";
-                echo mysqli_error($db);
+
             }
             $flag=$flag+1;
         }
         fclose($file);
         unlink("studentdata/".$name.".csv");
+              echo "<script>
+                  swal(
+                  'Success',
+                  'Data Uploaded',
+                  'success'
+                    ).then(function() {
+                window.location.href ='tutorprofile.php'; 
+              });
+                </script>";
     }
+ 
+
 } 
+else
+{
+    echo "Unauthorized access";
+}
 
 ?>
+
+
+
+
+
+</body>
+</html>
+
+
+

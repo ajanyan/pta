@@ -21,7 +21,7 @@
 
 	<title>PTA</title>
 </head>
-<body background="static/image.jpg">
+<body background="image.jpg">
 <div class="container">
 	<div class="row">
 		<div class="col-lg-2">

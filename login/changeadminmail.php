@@ -26,7 +26,7 @@
     </ul>
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="../php/logout.php">Logout</a>
+        <a class="nav-link" href="logout.php">Logout</a>
       </li>
      
     </ul>
@@ -40,7 +40,7 @@
   }
   elseif ($_SESSION["role"]!="admin")
   {
-    header("location:../php/logout.php");
+    header("location:logout.php");
   }
 ?>
 <div class="container">

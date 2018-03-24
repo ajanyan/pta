@@ -2,7 +2,6 @@
 <html>
 <head>
   <style type="text/css">
-    #myiframe {width:700px; height:350%;} 
   </style>
   <title>PTA</title>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -38,8 +37,8 @@ $res=mysqli_query($db,$sql);
       <li class="nav-item active">
         <a class="nav-link" href="tutorprofile.php">Manage Students</a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="uploaddetails.php">Upload</a>
+      <li class="nav-item">
+        <a class="nav-link" href="uploaddetails.php">Upload Data</a>
       </li>
 
     
@@ -80,18 +79,18 @@ $res=mysqli_query($db,$sql);
 
       }else{
         while($row=mysqli_fetch_assoc($res)){
-        $id=$row["name"];
+        $id=$row["reg"];
        echo "<tr>
        <td>{$row['reg']}</td>
        <td>{$row['name']}</td>
-       <td><form action=adminprofile.php method='post'>
-          <input type='hidden' name ='subid' value='$id'>
+       <td><form action=tutorprofile.php method='post'>
+          <input type='hidden' name ='studid' value='$id'>
           <input type='submit' class='btn btn-default' value ='Delete' ></form></td>
        </tr>";
         }
        echo "<tr>
-       <td><a href='createhod.php'><button class='btn btn-primary'>Create Reviewer</button></a></td>
-       <td><a href='changeadminmail.php'><button class='btn btn-primary'>Change Admin Mail</button></a></td>
+       <td><a href='addstudent.php'><button class='btn btn-primary'>Add Student</button></a></td>
+       <td></td>
        <td></td>
        </tr>";
 
@@ -99,11 +98,11 @@ $res=mysqli_query($db,$sql);
 
 
 
-    if(isset($_POST["subid"]))
+    if(isset($_POST["studid"]))
     {
   
       
-      $sql3="DELETE FROM student WHERE admname='$_POST[subid]'";
+      $sql3="DELETE FROM student WHERE reg='$_POST[studid]'";
 
           if (mysqli_query($db,$sql3))
           {
@@ -113,7 +112,7 @@ $res=mysqli_query($db,$sql);
                   'Data Deleted',
                   'warning'
                     ).then(function() {
-                window.location.href ='adminprofile.php'; 
+                window.location.href ='tutorprofile.php'; 
               });
                 </script>";
           }
@@ -133,6 +132,6 @@ $res=mysqli_query($db,$sql);
 <br>
 
 
-<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 </body>
 </html>

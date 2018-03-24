@@ -20,6 +20,9 @@
      
         <a class="nav-link" href="tutorprofile.php">Manage Student</a>
       </li>
+       <li class="nav-item ">
+        <a class="nav-link" href="uploaddetails.php">Upload Data</a>
+      </li>
 
       <li class="nav-item active">
         <a class="nav-link" href="changepassword.php">Change Password</a>
@@ -27,7 +30,7 @@
     </ul>
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="../php/logout.php">Logout</a>
+        <a class="nav-link" href="../logout.php">Logout</a>
       </li>
      
     </ul>
