@@ -11,7 +11,6 @@ if(!isset($_POST["email"]) || !isset($_POST["tutoremail"]))
 	{
 		header("Location:index.php");
 	}
-print_r($_POST);
 
 
 
@@ -27,16 +26,8 @@ print_r($_POST);
 	Student Name:$_POST[studname]
 	Register No:$_POST[regno]
 
-	Message:$_POST[message]
-
-
-
-
-
-
-
-	";
-	$headers = "From:$_POST[tutoremail]";
+	Message:$_POST[message]";
+	$headers = "From:$_POST[email]";
 if(mail($to,$subject,$txt,$headers))
 {
 	echo"<script>
