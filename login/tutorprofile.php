@@ -71,8 +71,8 @@ $res=mysqli_query($db,$sql);
       if( mysqli_num_rows( $res )==0 ){
         echo '<tr><td colspan="4">No Students Found</td></tr>';
           echo "<tr>
-       <td><a href='createhod.php'><button class='btn btn-primary'>Create Reviewer</button></a></td>
-       <td><a href='../php/changeadminmail.php'><button class='btn btn-primary'>Change Admin Mail</button></a></td>
+       <td><a href='addstudent.php'><button class='btn btn-primary'>Add Student</button></a></td>
+       <td></td>
        <td></td>
        <td></td>
        </tr>";

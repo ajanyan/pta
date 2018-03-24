@@ -91,7 +91,7 @@ $res=mysqli_query($db,$sql);
         echo '<tr><td colspan="4">No Tutors Found</td></tr>';
           echo "<tr>
        <td><a href='createhod.php'><button class='btn btn-primary'>Create Reviewer</button></a></td>
-       <td><a href='../php/changeadminmail.php'><button class='btn btn-primary'>Change Admin Mail</button></a></td>
+       <td></td>
        <td></td>
        <td></td>
        </tr>";
@@ -125,12 +125,16 @@ $res=mysqli_query($db,$sql);
       
       $sql3="DELETE FROM admin WHERE admname='$_POST[subid]'";
 
+      $sql4="DELETE FROM student WHERE tutor='$_POST[subid]'";
+          mysqli_query($db,$sql4);
+          echo mysqli_error($db);
           if (mysqli_query($db,$sql3))
           {
+
             echo "<script>
                   swal(
                   'Deleted',
-                  'Reviewer Deleted',
+                  'Tutor Deleted',
                   'warning'
                     ).then(function() {
                 window.location.href ='hodprofile.php'; 

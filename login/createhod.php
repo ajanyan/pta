@@ -21,6 +21,23 @@
 	<title>Create</title>
 </head>
 <body background="image.jpg">
+<?php 
+
+  session_start();
+  if(!isset($_SESSION["user"] ) && !isset($_SESSION["email"]))
+  {
+    header("location:index.php");
+  }
+  elseif ($_SESSION["role"]!="admin")
+  {
+    header("location:logout.php");
+  }
+
+
+
+ ?>
+
+
 
 	<div class="container">
 		<div class="row">
@@ -95,7 +112,7 @@
         <script>
                swal(
                 'Success',
-                'Reviewer created',
+                'HOD created',
                 'success'
                 ).then(function() {
                 window.location.href ='adminprofile.php'; 

@@ -22,6 +22,10 @@
 </head>
 <body background="image.jpg">
 	<?php 
+	if(!isset($_POST["regno"]) || !isset($_POST["dob"]))
+	{
+		header("Location:index.php");
+	}
 	require("connect.php");
 
 	$regno=$_POST["regno"];
@@ -65,7 +69,7 @@
 
 					  <div class="form-group">
 					    <label for="inputAddress2">Message</label>
-					    <textarea class="form-control" id="inputAddress2" rows="5" placeholder="Message" required=""></textarea>
+					    <textarea class="form-control" id="inputAddress2" name ="message" rows="5" placeholder="Message" required=""></textarea>
 					  </div>
 						<input type="hidden" name="studname" value="<?php echo $row1['name']; ?>">
 						<input type="hidden" name="regno" value="<?php echo $regno?>">

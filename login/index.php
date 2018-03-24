@@ -22,6 +22,18 @@
 <!--===============================================================================================-->
 </head>
 <body>
+	<?php 
+    	session_start();
+    	if(isset($_SESSION["user"]))
+    	{
+        	header("location:autologin.php");
+    	}
+?>
+     
+
+
+
+
 	
 	<div class="limiter">
 		<div class="container-login100">

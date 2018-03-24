@@ -21,6 +21,15 @@
 	<title>Upload</title>
 </head>
 <body background="image.jpg">
+    session_start();
+  if(!isset($_SESSION["user"] ) && !isset($_SESSION["email"]))
+  {
+    header("location:index.php");
+  }
+  elseif ($_SESSION["role"]!="tutor")
+  {
+    header("location:logout.php");
+  }
 
  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
