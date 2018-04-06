@@ -22,15 +22,31 @@
 
 if(!isset($_POST['key']))
 {
-    
+
     header("location:index.php");
 }
+$csvformat = array(
+    'text/csv',
+    'text/plain',
+    'application/csv',
+    'text/comma-separated-values',
+    'application/excel',
+    'application/vnd.ms-excel',
+    'application/vnd.msexcel',
+    'text/anytext',
+    'application/octet-stream',
+    'application/txt',
+);
+
+
+
+
 
 
  define ("filesplace","./studentdata");
  if (is_uploaded_file($_FILES['data']['tmp_name']))
  {
-    if ($_FILES['data']['type'] != "application/vnd.ms-excel")
+    if (!(in_array($_FILES['data']['type'],$csvformat)))
     {
 
         echo "<script>
