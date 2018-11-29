@@ -1,2 +1,2 @@
 # PTA
-Web app for getting feedback
+A web app for getting feedback
