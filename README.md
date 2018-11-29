@@ -1,2 +1,2 @@
 # PTA
-Web page fior getting feedback
+Web page for getting feedback
