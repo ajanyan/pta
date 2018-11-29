@@ -1,2 +1,3 @@
 # PTA Feedback
-A web app using php for getting feedback from PTA. To configure the web app change the connction configuration in connect.php file
+A web app using php for getting feedback from PTA.
+To configure the web app change the connction configuration in connect.php file
