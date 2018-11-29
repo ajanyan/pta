@@ -1,2 +1,2 @@
 # PTA Feedback
-A web app using php for getting feedback for PTA
+A web app using php for getting feedback form PTA
